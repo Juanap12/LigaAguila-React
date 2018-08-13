@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './LigaAguilaLogo.svg';
 import './App.css';
 import AddTeamForm from './components/AddTeamForm/AddTeamForm';
 import ViewTeams from './components/ViewTeams/ViewTeams';
@@ -10,26 +10,12 @@ import { Route, Link } from 'react-router-dom';
 
 class App extends Component {
 
-  /*
-  componentDidMount() {
-    const {teams} = this.state;
-    let teamsDatabaseReference = this.firebaseDatabase.ref('teams');
-    teamsDatabaseReference.once('value').then(snapshot => {
-      teams.push({
-        fullName: snapshot.val()
-      })
-    });
-    this.setState({teams});
-
-    console.log(this.state.teams);
-  }*/
-
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <img src={logo} className="App-leagueLogo" alt="logo" />
+          <h1 className="App-title">My Football League</h1>
         </header>
         <Nav tabs>
           <NavItem>
@@ -40,6 +26,7 @@ class App extends Component {
           </NavItem>
         </Nav>
         <div>
+          <Route exact path="/" component={ViewTeams}/>
           <Route path="/viewTeams" component={ViewTeams}/>
           <Route path="/addNewTeam" component={AddTeamForm}/>
         </div>

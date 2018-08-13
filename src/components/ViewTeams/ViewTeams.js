@@ -37,11 +37,7 @@ class ViewTeams extends Component {
             });
         }
         this.setState({ teams: teams });
-        console.log(teams);
     });
-    
-
-    console.log(this.state.teams);
   }
   render() {
     const teams = this.state.teams;

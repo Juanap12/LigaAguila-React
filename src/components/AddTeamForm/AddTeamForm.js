@@ -5,7 +5,7 @@ import {DB_CONFIG} from '../../config/config';
 import 'firebase/database';
 import 'firebase/storage';
 
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
 
 class AddTeamForm extends Component {
   constructor() {
@@ -18,11 +18,15 @@ class AddTeamForm extends Component {
       teamGround: "",
       teamLocation: "",
       teamLogoFile: null,
+
+      alertVisible: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.onDismiss = this.onDismiss.bind(this);
 
     if (!firebase.apps.length) {
       firebase.initializeApp(DB_CONFIG);
@@ -66,14 +70,25 @@ class AddTeamForm extends Component {
       teamShortName: "",
       teamGround: "",
       teamLocation: "",
-      teamLogoFile: null
+      teamLogoFile: null,
+
+      alertVisible: true
     });
+  }
+
+  onDismiss() {
+      this.setState({
+          alertVisible: false
+      });
   }
 
 
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
+        <Alert color="success" isOpen={this.state.alertVisible} toggle={this.onDismiss}>
+            You added a team!
+        </Alert>
         <FormGroup>
           <Label for="team-fullname">Team full name</Label>
           <Input
@@ -131,6 +146,7 @@ class AddTeamForm extends Component {
             name="teamLogoFile"
             id="team-logo"
             aria-labelledby="teamLogo-label teamLogo-description"
+            accept="image/*"
             onChange={this.handleFileChange}
             required
           />
