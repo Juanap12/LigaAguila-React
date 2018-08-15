@@ -1,14 +1,33 @@
-import React, { Component } from 'react';
-import logo from './LigaAguilaLogo.svg';
-import './App.css';
-import AddTeamForm from './components/AddTeamForm/AddTeamForm';
-import ViewTeams from './components/ViewTeams/ViewTeams';
+import React, { Component } from "react";
+import logo from "./LigaAguilaLogo.svg";
+import "./App.css";
+import AddTeamForm from "./components/AddTeamForm/AddTeamForm";
+import ViewTeams from "./components/ViewTeams/ViewTeams";
 
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Nav, NavItem, NavLink } from "reactstrap";
 
-import { Route, Link } from 'react-router-dom';
+import classnames from "classnames";
+
+import { Route } from "react-router-dom";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeTab: '1'
+    };
+
+    this.toggleTabs = this.toggleTabs.bind(this);
+  }
+
+  toggleTabs(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
+  }
 
   render() {
     return (
@@ -19,16 +38,32 @@ class App extends Component {
         </header>
         <Nav tabs>
           <NavItem>
-            <NavLink href="/viewTeams">View Teams</NavLink>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '1' })}
+              onClick={() => {
+                this.toggleTabs('1');
+              }}
+              href="/viewTeams"
+            >
+              View Teams
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/addNewTeam">Add New Team</NavLink>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '2' })}
+              onClick={() => {
+                this.toggleTabs('2');
+              }}
+              href="/addNewTeam"
+            >
+              Add New Team
+            </NavLink>
           </NavItem>
         </Nav>
         <div>
-          <Route exact path="/" component={ViewTeams}/>
-          <Route path="/viewTeams" component={ViewTeams}/>
-          <Route path="/addNewTeam" component={AddTeamForm}/>
+          <Route exact path="/" component={ViewTeams} />
+          <Route path="/viewTeams" component={ViewTeams} />
+          <Route path="/addNewTeam" component={AddTeamForm} />
         </div>
       </div>
     );

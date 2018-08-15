@@ -1,11 +1,22 @@
 import React, { Component } from "react";
 
-import firebase from 'firebase/app';
-import {DB_CONFIG} from '../../config/config';
-import 'firebase/database';
-import 'firebase/storage';
+import './AddTeamForm.css';
 
-import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
+import firebase from "firebase/app";
+import { DB_CONFIG } from "../../config/config";
+import "firebase/database";
+import "firebase/storage";
+
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Alert,
+  Col
+} from "reactstrap";
 
 class AddTeamForm extends Component {
   constructor() {
@@ -20,6 +31,8 @@ class AddTeamForm extends Component {
       teamLogoFile: null,
 
       alertVisible: false,
+      columnsSpacing: 8,
+      labelSpacing: 2
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -61,8 +74,7 @@ class AddTeamForm extends Component {
     const firebaseLogoReference = this.firebaseStorage.ref(
       "teamLogos/" + newTeamKey
     );
-    firebaseLogoReference
-      .put(this.state.teamLogoFile);
+    firebaseLogoReference.put(this.state.teamLogoFile);
 
     this.setState({
       teamKey: "",
@@ -77,84 +89,113 @@ class AddTeamForm extends Component {
   }
 
   onDismiss() {
-      this.setState({
-          alertVisible: false
-      });
+    this.setState({
+      alertVisible: false
+    });
   }
-
 
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Alert color="success" isOpen={this.state.alertVisible} toggle={this.onDismiss}>
-            You added a team!
+        <Alert
+          color="success"
+          isOpen={this.state.alertVisible}
+          toggle={this.onDismiss}
+        >
+          You added a team!
         </Alert>
-        <FormGroup>
-          <Label for="team-fullname">Team full name</Label>
-          <Input
-            type="text"
-            name="teamFullName"
-            id="team-fullname"
-            placeholder="The team full name"
-            onChange={this.handleChange}
-            value={this.state.teamFullName}
-            required
-          />
+        <FormGroup row>
+          <Label className="label-text" for="team-fullname" sm={this.state.labelSpacing}>
+            Team full name
+          </Label>
+          <Col sm={this.state.columnsSpacing}>
+            <Input
+              type="text"
+              name="teamFullName"
+              id="team-fullname"
+              placeholder="The team full name"
+              onChange={this.handleChange}
+              value={this.state.teamFullName}
+              required
+            />
+          </Col>
         </FormGroup>
-        <FormGroup>
-          <Label for="team-shortname">Team short name</Label>
-          <Input
-            type="text"
-            name="teamShortName"
-            id="team-shortname"
-            placeholder="The team short name"
-            onChange={this.handleChange}
-            value={this.state.teamShortName}
-            required
-          />
+        <FormGroup row>
+          <Label className="label-text" for="team-shortname" sm={this.state.labelSpacing}>
+            Team short name
+          </Label>
+          <Col sm={this.state.columnsSpacing}>
+            <Input
+              type="text"
+              name="teamShortName"
+              id="team-shortname"
+              placeholder="The team short name"
+              onChange={this.handleChange}
+              value={this.state.teamShortName}
+              required
+            />
+          </Col>
         </FormGroup>
-        <FormGroup>
-          <Label for="team-ground">Team ground</Label>
-          <Input
-            type="text"
-            name="teamGround"
-            id="team-ground"
-            placeholder="The team ground/stadium name"
-            onChange={this.handleChange}
-            value={this.state.teamGround}
-            required
-          />
+        <FormGroup row>
+          <Label className="label-text" for="team-ground" sm={this.state.labelSpacing}>
+            Team ground
+          </Label>
+          <Col sm={this.state.columnsSpacing}>
+            <Input
+              type="text"
+              name="teamGround"
+              id="team-ground"
+              placeholder="The team ground/stadium name"
+              onChange={this.handleChange}
+              value={this.state.teamGround}
+              required
+            />
+          </Col>
         </FormGroup>
-        <FormGroup>
-          <Label for="team-location">Team location</Label>
-          <Input
-            type="text"
-            name="teamLocation"
-            id="team-location"
-            placeholder="Where the team is based in"
-            onChange={this.handleChange}
-            value={this.state.teamLocation}
-            required
-          />
+        <FormGroup row>
+          <Label className="label-text" for="team-location" sm={this.state.labelSpacing}>
+            Team location
+          </Label>
+          <Col sm={this.state.columnsSpacing}>
+            <Input
+              type="text"
+              name="teamLocation"
+              id="team-location"
+              placeholder="Where the team is based in"
+              onChange={this.handleChange}
+              value={this.state.teamLocation}
+              required
+            />
+          </Col>
         </FormGroup>
-        <FormGroup>
-          <Label for="team-logo" id="teamLogo-label">
+        <FormGroup row>
+          <Label
+            className="label-text"
+            for="team-logo"
+            id="teamLogo-label"
+            sm={this.state.labelSpacing}
+          >
             Team logo
           </Label>
-          <Input
-            type="file"
-            name="teamLogoFile"
-            id="team-logo"
-            aria-labelledby="teamLogo-label teamLogo-description"
-            accept="image/*"
-            onChange={this.handleFileChange}
-            required
-          />
-          <FormText id="teamLogo-description" color="muted">
-            Upload a image file of the team logo.
-          </FormText>
+          <Col sm={this.state.columnsSpacing}>
+            <Input
+              type="file"
+              name="teamLogoFile"
+              id="team-logo"
+              aria-labelledby="teamLogo-label teamLogo-description"
+              accept="image/*"
+              onChange={this.handleFileChange}
+              required
+            />
+
+            <FormText id="teamLogo-description" color="muted">
+              Upload a image file of the team logo.
+            </FormText>
+          </Col>
         </FormGroup>
-        <Button>Create team</Button>
+        <div className="button-wrapper">
+          <Button color="success">Create team</Button>
+        </div>
       </Form>
     );
   }
