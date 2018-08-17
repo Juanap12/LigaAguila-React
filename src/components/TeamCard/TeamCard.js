@@ -15,12 +15,11 @@ import {
 } from "reactstrap";
 
 class TeamCard extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-        teamLogoURL: ""
+      teamLogoURL: ""
     };
 
     if (!firebase.apps.length) {
@@ -30,13 +29,13 @@ class TeamCard extends Component {
     this.team = this.props.value;
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const firebaseLogoReference = this.firebaseStorage.ref(
-        "teamLogos/" + this.team.teamKey
-      );
-      firebaseLogoReference
-        .getDownloadURL()
-        .then(url => this.setState({ teamLogoURL: url }));
+      "teamLogos/" + this.team.teamKey
+    );
+    firebaseLogoReference
+      .getDownloadURL()
+      .then(url => this.setState({ teamLogoURL: url }));
   }
 
   render() {
@@ -51,11 +50,17 @@ class TeamCard extends Component {
           />
           <CardBody>
             <CardSubtitle id="team-fullName">Team full name</CardSubtitle>
-            <CardText aria-labelledby="team-fullName">{this.team.teamFullName}</CardText>
+            <CardText aria-labelledby="team-fullName">
+              {this.team.teamFullName}
+            </CardText>
             <CardSubtitle id="team-ground">Team ground</CardSubtitle>
-            <CardText aria-labelledby="team-ground">{this.team.teamGround}</CardText>
+            <CardText aria-labelledby="team-ground">
+              {this.team.teamGround}
+            </CardText>
             <CardSubtitle id="team-location">Team location</CardSubtitle>
-            <CardText aria-labelledby="team-location">{this.team.teamLocation}</CardText>
+            <CardText aria-labelledby="team-location">
+              {this.team.teamLocation}
+            </CardText>
           </CardBody>
         </Card>
       </Col>
