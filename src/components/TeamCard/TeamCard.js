@@ -41,7 +41,7 @@ class TeamCard extends Component {
 
   render() {
     return (
-      <Col sm="3">
+      <Col md="2">
         <Card>
           <CardHeader> {this.team.teamShortName} </CardHeader>
           <CardImg
