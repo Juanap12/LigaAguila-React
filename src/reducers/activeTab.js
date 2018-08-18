@@ -1,7 +1,7 @@
-const activeTab = (state = '1', action) => {
+const activeTab = (state = '', action) => {
     switch (action.type) {
         case 'SET_ACTIVE_TAB':
-            return action.filter
+            return action.tabNumber
         default:
             return state
     }

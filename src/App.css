@@ -31,3 +31,17 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.ActiveNavLink {
+  padding-left: 10px;
+  padding-right: 10px;
+  border-left: 2px solid rgba(0,0,0,.03);
+  border-right: 2px solid rgba(0,0,0,.03);
+  border-top: 2px solid black;
+  font-weight: 500;
+}
+
+.NavLink {
+  padding-left: 10px;
+  padding-right: 10px;
+}
