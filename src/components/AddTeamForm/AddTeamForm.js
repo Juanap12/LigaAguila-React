@@ -108,7 +108,7 @@ class AddTeamForm extends Component {
           <Label className="label-text" for="team-fullname" sm={this.state.labelSpacing}>
             Team full name
           </Label>
-          <Col sm={this.state.columnsSpacing}>
+          <Col md={this.state.columnsSpacing}>
             <Input
               type="text"
               name="teamFullName"
@@ -124,7 +124,7 @@ class AddTeamForm extends Component {
           <Label className="label-text" for="team-shortname" sm={this.state.labelSpacing}>
             Team short name
           </Label>
-          <Col sm={this.state.columnsSpacing}>
+          <Col md={this.state.columnsSpacing}>
             <Input
               type="text"
               name="teamShortName"
@@ -140,7 +140,7 @@ class AddTeamForm extends Component {
           <Label className="label-text" for="team-ground" sm={this.state.labelSpacing}>
             Team ground
           </Label>
-          <Col sm={this.state.columnsSpacing}>
+          <Col md={this.state.columnsSpacing}>
             <Input
               type="text"
               name="teamGround"
@@ -156,7 +156,7 @@ class AddTeamForm extends Component {
           <Label className="label-text" for="team-location" sm={this.state.labelSpacing}>
             Team location
           </Label>
-          <Col sm={this.state.columnsSpacing}>
+          <Col md={this.state.columnsSpacing}>
             <Input
               type="text"
               name="teamLocation"
@@ -177,7 +177,7 @@ class AddTeamForm extends Component {
           >
             Team logo
           </Label>
-          <Col sm={this.state.columnsSpacing}>
+          <Col md={this.state.columnsSpacing}>
             <Input
               type="file"
               name="teamLogoFile"
