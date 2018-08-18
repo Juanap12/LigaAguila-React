@@ -22,7 +22,9 @@ class App extends Component {
         <Nav tabs>
           <NavItem>
             <NavLink
-              className={this.props.activeTab === "1" ? "ActiveNavLink" : "NavLink"}
+              className={
+                this.props.activeTab === "1" ? "ActiveNavLink" : "NavLink"
+              }
               onClick={() => {
                 this.props.onTabClick("1");
               }}
@@ -34,7 +36,9 @@ class App extends Component {
 
           <NavItem>
             <NavLink
-              className={this.props.activeTab === "2" ? "ActiveNavLink" : "NavLink"}
+              className={
+                this.props.activeTab === "2" ? "ActiveNavLink" : "NavLink"
+              }
               onClick={() => {
                 this.props.onTabClick("2");
               }}

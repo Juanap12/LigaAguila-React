@@ -18,6 +18,9 @@ import {
   Col
 } from "reactstrap";
 
+import { connect } from "react-redux";
+import { setActiveTab } from "../../actions";
+
 class AddTeamForm extends Component {
   constructor() {
     super();
@@ -95,6 +98,11 @@ class AddTeamForm extends Component {
   }
 
   render() {
+
+    if(this.props.activateTab != "2"){
+      this.props.activateTab("2");
+    }
+
     return (
       <Form onSubmit={this.handleSubmit}>
         <Alert
@@ -201,4 +209,21 @@ class AddTeamForm extends Component {
   }
 }
 
-export default AddTeamForm;
+const mapStateToProps = state => {
+  return {
+    activeTab: state.activeTab
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    activateTab: tabNumber => {
+      dispatch(setActiveTab(tabNumber));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddTeamForm);
