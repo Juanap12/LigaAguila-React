@@ -99,7 +99,7 @@ class AddTeamForm extends Component {
 
   render() {
 
-    if(this.props.activateTab != "2"){
+    if(this.props.activateTab !== "2"){
       this.props.activateTab("2");
     }
 

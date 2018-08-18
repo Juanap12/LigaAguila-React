@@ -43,7 +43,7 @@ class ViewTeams extends Component {
     });
   }
   render() {
-    if(this.props.activateTab != "1"){
+    if(this.props.activateTab !== "1"){
       this.props.activateTab("1");
     }
 

@@ -22,29 +22,35 @@ class App extends Component {
         <Nav tabs>
           <NavItem>
             <NavLink
-              className={
-                this.props.activeTab === "1" ? "ActiveNavLink" : "NavLink"
-              }
               onClick={() => {
                 this.props.onTabClick("1");
               }}
               to="/viewTeams"
             >
-              View Teams
+              <h2
+                className={
+                  this.props.activeTab === "1" ? "ActiveNavLink" : "NavLink"
+                }
+              >
+                View Teams
+              </h2>
             </NavLink>
           </NavItem>
 
           <NavItem>
             <NavLink
-              className={
-                this.props.activeTab === "2" ? "ActiveNavLink" : "NavLink"
-              }
               onClick={() => {
                 this.props.onTabClick("2");
               }}
               to="/addNewTeam"
             >
+              <h2
+                className={
+                  this.props.activeTab === "2" ? "ActiveNavLink" : "NavLink"
+                }
+              >
               Add New Team
+              </h2>
             </NavLink>
           </NavItem>
         </Nav>
